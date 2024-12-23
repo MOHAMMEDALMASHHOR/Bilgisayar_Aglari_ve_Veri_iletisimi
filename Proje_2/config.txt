@@ -1,0 +1,69 @@
+enable
+configure terminal
+hostname Ankara-Router
+enable secret cisco
+ip routing
+
+! VLAN Interfaces
+interface GigabitEthernet0/0
+no shutdown
+description Trunk to Switch
+
+interface GigabitEthernet0/0.10
+encapsulation dot1Q 10
+ip address 192.168.1.1 255.255.255.0
+ip helper-address 192.168.4.11  
+no shutdown
+
+interface GigabitEthernet0/0.20
+encapsulation dot1Q 20
+ip address 192.168.2.1 255.255.255.0
+ip helper-address 192.168.4.11
+no shutdown
+
+interface GigabitEthernet0/0.40
+encapsulation dot1Q 40
+ip address 192.168.4.1 255.255.255.0
+no shutdown
+
+! Serial Interfaces
+interface Serial0/0/0
+ip address 10.10.10.1 255.255.255.252
+clock rate 128000
+no shutdown
+description Link to Istanbul
+
+interface Serial0/0/1
+ip address 10.10.11.1 255.255.255.252
+clock rate 128000
+no shutdown
+description Link to Izmir
+
+! OSPF Configuration
+router ospf 1
+router-id 1.1.1.1
+network 192.168.1.0 0.0.0.255 area 0
+network 192.168.2.0 0.0.0.255 area 0
+network 192.168.4.0 0.0.0.255 area 0
+network 10.10.10.0 0.0.0.3 area 0
+network 10.10.11.0 0.0.0.3 area 0
+exit
+
+
+interface GigabitEthernet0/0.10
+encapsulation dot1Q 10
+ip address 192.168.1.2 255.255.255.0
+ip helper-address 192.168.4.11  
+no shutdown
+
+interface GigabitEthernet0/0.20
+encapsulation dot1Q 20
+ip address 192.168.2.2 255.255.255.0
+ip helper-address 192.168.4.11
+no shutdown
+
+interface GigabitEthernet0/0.30
+encapsulation dot1Q 30
+ip address 192.168.3.2 255.255.255.0
+ip helper-address 192.168.4.11
+no shutdown
