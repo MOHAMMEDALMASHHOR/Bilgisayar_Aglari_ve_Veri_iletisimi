@@ -1,0 +1,5 @@
+
+Base ethernet MAC Address       : 00:0A:F3:2E:A2:36
+Motherboard assembly number     : 73-10390-03
+Base ethernet MAC Address       : 00:0A:F3:2E:A2:36
+Motherboard assembly number    Switch&gt; enableSwitch&gt; enable : 73-10390-03Switch&gt; enable
