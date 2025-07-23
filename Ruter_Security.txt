@@ -1,0 +1,191 @@
+enable
+configure terminal
+! Set the hostname
+
+
+! Enable secret for privileged EXEC mode
+enable secret Mashhor
+
+! Encrypt all passwords
+service password-encryption
+
+! Set password for console line
+line console 0
+password Mashhor
+login
+exit
+line vty 0 4
+password Mashhor
+login
+
+exit
+! Set password for VTY lines (SSH and Telnet)
+line vty 0 4
+password Mashhor
+login
+transport input ssh 
+exit
+
+! Configure SSH with a crypto key
+ip domain-name company.local
+crypto key generate rsa
+! Specify the modulus size
+1024
+
+! Create a local admin user with privilege 15
+username admin privilege 15 secret Mashhor
+
+! Enable SSH version 2
+ip ssh version 2
+
+! Save the configuration
+end
+write memory
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+en
+conf terminal
+hostname Building-1
+enable secret class12345
+service password-encryption
+
+security passwords min-length 10
+login block-for 120 attempts 2 within 30
+no ip domain-lookup
+ip domain-name cisco.com
+crypto key generate rsa general-keys modulus 1024
+line console 0
+password cisco12345
+login
+logging synchronous
+exec-timeout 60
+exit
+line vty 0 4
+password cisco12345
+transport input ssh
+login local
+logging synchronous
+exec-timeout 60
+exit
+line aux 0
+password cisco12345
+login
+logging synchronous
+exec-timeout 60
+exit
+ip ssh version 2
+ip ssh time-out 120
+username netadmin privilege 15 secret Cisco_CCNA7
+interface g0/0
+ip address 192.168.1.126 255.255.255.224
+description First Floor LAN
+ipv6 address 2001:DB8:ACAD:A::1/64
+ipv6 address fe80::1 link-local
+no shutdown
+exit
+interface g0/1
+ip address 192.168.1.158 255.255.255.240
+description Second Floor LAN
+ipv6 address 2001:DB8:ACAD:B::1/64
+ipv6 address fe80::1 link-local
+no shutdown
+exit
+ipv6 unicast-routing
+exit
+write
+
+
+
+
+
+enable
+conf terminal
+hostname SecondFloorSwitch
+enable secret class12345
+service password-encryption
+banner motd "Second Floor Switch Switch"
+no ip domain-lookup
+line console 0
+password cisco12345
+login
+logging synchronous
+exec-timeout 60
+exit
+line vty 0 15
+password cisco12345
+login
+logging synchronous
+exec-timeout 60
+exit
+interface vlan 1
+ip address 192.168.1.157 255.255.255.240
+no shutdown
+ip default-gateway 192.168.1.158
+exit
+write
+
+
+
+enable
+configure terminal
+hostname SecondFloorSwitch
+interface vlan 1
+ description Management VLAN
+ ip address 192.168.1.157 255.255.255.240
+ ipv6 address 2001:db8:acad:b::157/64
+ ipv6 address fe80::2 link-local
+ no shutdown
+ip default-gateway 192.168.1.158
+line vty 0 4
+ password cisco
+ login
+exit
+
+
+enable
+conf terminal
+enable secret class12345
+service password-encryption
+banner motd $Administration Switch$
+no ip domain-lookup
+
+line console 0
+password cisco12345
+login
+logging synchronous
+exec-timeout 60
+exit
+
+line vty 0 15
+password cisco12345
+login
+logging synchronous
+exec-timeout 60
+exit
+
+interface vlan 1
+ip address 192.168.1.157 255.255.255.240
+no shutdown
+
+ip default-gateway 192.168.1.158
+exit
+write
+
+
+
+
+
