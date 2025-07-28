@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updated Multi-City VLAN Network</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            background-color: #007acc;
+            color: white;
+            padding: 20px;
+            font-size: 2.5em;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px auto;
+            width: 90%;
+        }
+
+        .city {
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            margin: 20px;
+            width: 30%;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .city:hover {
+            transform: scale(1.05);
+        }
+
+        .city h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .vlan {
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Color Scheme */
+        .vlan-istanbul-it {
+            background-color: #ff0000; /* Red */
+        }
+
+        .vlan-istanbul-workers {
+            background-color: #ffff00; /* Yellow */
+        }
+
+        .vlan-istanbul-guests {
+            background-color: #ff6600; /* Orange */
+        }
+
+        .vlan-ankara-it {
+            background-color: #ff00ff; /* Magenta (Pink) */
+        }
+
+        .vlan-ankara-workers {
+            background-color: #e6e6fa; /* Lavender (Light Purple) */
+        }
+
+        .vlan-ankara-guests {
+            background-color: #66ccff; /* Light Blue (Cyan) */
+        }
+
+        .vlan-ankara-management {
+            background-color: #000080; /* Dark Blue (Navy) */
+        }
+
+        .vlan-izmir-it {
+            background-color: #00ff00; /* Bright Green */
+        }
+
+        .vlan-izmir-management {
+            background-color: #00ffff; /* Bright Cyan */
+        }
+
+        .vlan-izmir-guests {
+            background-color: #008080; /* Teal */
+        }
+
+        .vlan-izmir-workers {
+            background-color: #006400; /* Dark Green */
+        }
+
+        footer {
+            text-align: center;
+            background-color: #007acc;
+            color: white;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+
+<header>Updated Multi-City VLAN Network</header>
+
+<div class="container">
+    <!-- Istanbul Section -->
+    <div class="city">
+        <h2>Istanbul</h2>
+        <div class="vlan vlan-istanbul-it">
+            <strong>VLAN IT:</strong>  
+            <br>Subnet: 192.168.10.0/24
+            <br>Gateway: 192.168.10.1
+        </div>
+        <div class="vlan vlan-istanbul-workers">
+            <strong>VLAN Workers:</strong>  
+            <br>Subnet: 192.168.20.0/24
+            <br>Gateway: 192.168.20.1
+        </div>
+        <div class="vlan vlan-istanbul-guests">
+            <strong>VLAN Guests:</strong>  
+            <br>Subnet: 192.168.30.0/24
+            <br>Gateway: 192.168.30.1
+        </div>
+    </div>
+
+    <!-- Ankara Section -->
+    <div class="city">
+        <h2>Ankara</h2>
+        <div class="vlan vlan-ankara-management">
+            <strong>VLAN Management:</strong>  
+            <br>IPv6 Subnet: FE80::/64
+            <br>Gateway: FE80::1
+        </div>
+        <div class="vlan vlan-ankara-it">
+            <strong>VLAN IT:</strong>  
+            <br>Subnet: 192.168.40.0/24
+            <br>Gateway: 192.168.40.1
+        </div>
+        <div class="vlan vlan-ankara-workers">
+            <strong>VLAN Workers:</strong>  
+            <br>Subnet: 192.168.50.0/24
+            <br>Gateway: 192.168.50.1
+        </div>
+        <div class="vlan vlan-ankara-guests">
+            <strong>VLAN Guests:</strong>  
+            <br>Subnet: 192.168.60.0/24
+            <br>Gateway: 192.168.60.1
+        </div>
+    </div>
+
+    <!-- Izmir Section -->
+    <div class="city">
+        <h2>Izmir</h2>
+        <div class="vlan vlan-izmir-management">
+            <strong>VLAN Management:</strong>  
+            <br>Subnet: 10.10.11.0/24
+            <br>Gateway: 10.10.11.1
+        </div>
+        <div class="vlan vlan-izmir-it">
+            <strong>VLAN IT:</strong>  
+            <br>Subnet: 192.168.70.0/24
+            <br>Gateway: 192.168.70.1
+        </div>
+        <div class="vlan vlan-izmir-guests">
+            <strong>VLAN Guests:</strong>  
+            <br>Subnet: 192.168.80.0/2
+            <br>Gateway: 192.168.80.1
+        </div>
+        <div class="vlan vlan-izmir-workers">
+            <strong>VLAN Workers:</strong>  
+            <br>Subnet: 192.168.90.0/24
+            <br>Gateway: 192.168.90.1
+        </div>
+    </div>
+</div>
+
+<footer>&copy; 2024 Updated Multi-City VLAN Network by [Your Name]</footer>
+
+</body>
+</html>
+ 
