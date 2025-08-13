@@ -1,0 +1,39 @@
+enable
+configure terminal
+! Set the hostname for the switch
+hostname Mashhor_Switch
+
+! Enable secret for privileged EXEC mode
+enable secret Mashhor
+
+! Encrypt all passwords
+service password-encryption
+
+! Set password for console line
+line console 0
+password Mashhor
+login
+exit
+
+! Set password for VTY lines (SSH and Telnet)
+line vty 0 4
+password Mashhor
+login
+transport input telnet 
+exit
+
+! Configure SSH with a crypto key
+ip domain-name company.local
+crypto key generate rsa
+! Specify the modulus size
+1024
+
+! Create a local admin user with privilege 15
+username admin privilege 15 secret Mashhor
+
+! Enable SSH version 2
+ip ssh version 2
+
+! Save the configuration
+end
+write memory
